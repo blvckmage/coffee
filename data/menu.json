@@ -1,0 +1,85 @@
+{
+  "espresso-bar": [
+    {
+      "name": "Эспрессо",
+      "price": 250,
+      "image": "images/espresso.jpg"
+    },
+    {
+      "name": "Американo",
+      "price": 300,
+      "image": "images/americano.jpg"
+    },
+    {
+      "name": "Двойной эспрессо",
+      "price": 400,
+      "image": "images/espresso.jpg"
+    },
+    {
+      "name": "Мачиато",
+      "price": 360,
+      "image": "images/latte.jpg"
+    }
+  ],
+  "milk-coffee": [
+    {
+      "name": "Капучино",
+      "price": 400,
+      "image": "images/cappuccino.jpg"
+    },
+    {
+      "name": "Латте",
+      "price": 450,
+      "image": "images/latte.jpg"
+    },
+    {
+      "name": "Флэт уайт",
+      "price": 420,
+      "image": "images/wood-texture.jpg"
+    },
+    {
+      "name": "Какао",
+      "price": 380,
+      "image": "images/hero-bg.jpg"
+    }
+  ],
+  "desserts": [
+    {
+      "name": "Тирамису",
+      "price": 600,
+      "image": "images/coffee-texture.jpg"
+    },
+    {
+      "name": "Чизкейк",
+      "price": 500,
+      "image": "images/americano.jpg"
+    },
+    {
+      "name": "Маффин",
+      "price": 250,
+      "image": "images/coffee-bg.jpg"
+    },
+    {
+      "name": "Круассан",
+      "price": 200,
+      "image": "images/wood-texture.jpg"
+    }
+  ],
+  "tea": [
+    {
+      "name": "Зелёный чай",
+      "price": 180,
+      "image": "images/coffee-texture.jpg"
+    },
+    {
+      "name": "Чёрный чай",
+      "price": 150,
+      "image": "images/hero-bg.jpg"
+    },
+    {
+      "name": "Чай гурджаани",
+      "price": 220,
+      "image": "images/wood-texture.jpg"
+    }
+  ]
+}
