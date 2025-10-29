@@ -43,7 +43,7 @@ if ($catering && is_array($catering) && !empty($catering)) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coffee Pro - Свежеобжаренный кофе и оборудование</title>
+    <title>Tanqurai bread & coffee - Свежеобжаренный кофе и хлеб</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -62,7 +62,7 @@ if ($catering && is_array($catering) && !empty($catering)) {
         <div class="container">
             <div class="header-content">
                 <div class="logo">
-                    <span>Coffee Pro</span>
+                    <span>Tanqurai bread & coffee</span>
                 </div>
                 <nav class="nav">
                     <ul class="nav-list">
@@ -94,9 +94,9 @@ if ($catering && is_array($catering) && !empty($catering)) {
         <div class="hero-overlay"></div>
         <div class="hero-content">
             <div class="hero-text" data-aos="fade-up">
-                <h1 class="hero-title">Свежеобжаренный кофе и оборудование для бизнеса</h1>
+                <h1 class="hero-title">Свежеобжаренный кофе и свежая выпечка</h1>
                 <p class="hero-subtitle">Доставка по всему Казахстану и СНГ</p>
-                <p class="hero-about">Coffee Pro - это ваш надежный партнер в мире кофе. Мы предлагаем высококачественные кофейные зерна, свежую обжарку и профессиональное оборудование для кафе, ресторанов и кофенеек.</p>
+                <p class="hero-about">Tanqurai bread & coffee - это ваш надежный партнер в мире кофе и выпечки. Мы предлагаем свежеобжаренный кофе, ароматный хлеб и профессиональное оборудование для кафе и ресторанов.</p>
                 <button class="cta-btn hero-cta">Узнать больше</button>
             </div>
             <div class="hero-form" data-aos="fade-up" data-aos-delay="200">
@@ -600,8 +600,8 @@ if ($catering && is_array($catering) && !empty($catering)) {
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h4>Coffee Pro</h4>
-                    <p>Свежеобжаренный кофе и оборудование для бизнеса</p>
+                    <h4>Tanqurai bread & coffee</h4>
+                    <p>Свежеобжаренный кофе и свежая выпечка</p>
                     <p>Доставка по всему Казахстану и СНГ</p>
                 </div>
                 <div class="footer-section">
@@ -625,7 +625,7 @@ if ($catering && is_array($catering) && !empty($catering)) {
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 Coffee Pro. Все права защищены.</p>
+                <p>&copy; 2025 Tanqurai bread & coffee. Все права защищены.</p>
             </div>
         </div>
 
