@@ -82,7 +82,7 @@ if ($catering && is_array($catering) && !empty($catering)) {
                             <a href="#menu" class="nav-link">Меню</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a href="#contacts" class="nav-link">Контакты</a>
+                            <a href="#footer" class="nav-link">Контакты</a>
                             <div class="dropdown-content">
                                 <a href="#branches">Адреса</a>
                                 <a href="#contacts">Контакты</a>
