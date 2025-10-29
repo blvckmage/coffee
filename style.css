@@ -228,6 +228,7 @@ body {
     cursor: pointer;
     gap: 4px;
     padding: 8px;
+    z-index: 1001;
 }
 
 .bar {
@@ -235,6 +236,19 @@ body {
     height: 2px;
     background: #4B2E16;
     transition: all 0.3s ease;
+    border-radius: 1px;
+}
+
+.burger.active .bar:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.burger.active .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.burger.active .bar:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
 }
 
 /* Hero Section */
@@ -1946,6 +1960,28 @@ body {
 }
 
 /* Responsive Design */
+@media (max-width: 1200px) {
+    .container {
+        max-width: 800px;
+    }
+
+    .hero-content h1 {
+        font-size: 42px;
+    }
+
+    .products-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+
+    .menu-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+
+    .catering-grid {
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    }
+}
+
 @media (max-width: 1024px) {
     .hero-content {
         grid-template-columns: 1fr;
@@ -1957,7 +1993,9 @@ body {
         font-size: 36px;
     }
 
-    .about-content {
+    .about-content,
+    .franchise-content,
+    .school-content {
         grid-template-columns: 1fr;
         gap: 40px;
     }
@@ -1966,9 +2004,23 @@ body {
         grid-template-columns: 1fr;
         gap: 40px;
     }
+
+    .products-grid,
+    .menu-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+
+    .catering-grid {
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    }
+
+    .footer-content {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
 }
 
 @media (max-width: 768px) {
+    /* Header & Navigation */
     .nav-item.dropdown:hover .dropdown-content {
         display: none;
     }
@@ -1988,6 +2040,7 @@ body {
 
     .burger {
         display: flex;
+        cursor: pointer;
     }
 
     .header-content {
@@ -1998,15 +2051,41 @@ body {
         font-size: 20px;
     }
 
+    /* Mobile Burger Menu */
+    .mobile-nav.active {
+        left: 0;
+    }
+
+    .mobile-nav-link {
+        font-size: 18px;
+        padding: 16px 20px;
+        border-bottom: 1px solid rgba(232, 213, 176, 0.3);
+        color: #4B2E16;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+    }
+
+    .mobile-nav-link:hover {
+        background-color: rgba(140, 98, 57, 0.1);
+        color: #8C6239;
+    }
+
+    /* Hero Section */
     .hero {
-        padding: 100px 0 60px;
+        padding: 80px 0 40px;
+        min-height: 80vh;
     }
 
     .hero-title {
-        font-size: 28px;
+        font-size: 32px;
+        line-height: 1.2;
     }
 
     .hero-subtitle {
+        font-size: 18px;
+    }
+
+    .hero-about {
         font-size: 16px;
     }
 
@@ -2017,82 +2096,318 @@ body {
 
     .contact-form {
         padding: 24px;
+        border-radius: 12px;
     }
 
+    /* Main Sections */
     .about,
     .products,
-    .guarantees,
-    .contacts-coffee {
+    .menu,
+    .news,
+    .catering,
+    .reservation,
+    .branches {
         padding: 60px 0;
     }
 
     .about-text h2,
     .products h2,
-    .guarantees h2,
-    .contacts h2,
-    .contacts-coffee h2 {
-        font-size: 28px;
+    .menu h2,
+    .news h2,
+    .catering h2,
+    .reservation h2,
+    .branches h2,
+    .contacts h2 {
+        font-size: 32px;
+        margin-bottom: 40px;
     }
 
-    .products-grid {
+    /* Grid Layouts */
+    .products-grid,
+    .menu-grid,
+    .catering-grid,
+    .news-grid,
+    .branches-grid {
         grid-template-columns: 1fr;
         gap: 30px;
     }
 
-    .guarantees-grid {
+    /* Products */
+    .product-card,
+    .menu-category {
+        margin: 0 auto;
+        max-width: 100%;
+        padding: 24px;
+    }
+
+    .product-content h3 {
+        font-size: 20px;
+    }
+
+    .menu-category h3 {
+        font-size: 20px;
+    }
+
+    /* Forms */
+    .booking-form {
+        padding: 30px 20px;
+        margin: 0 10px;
+        border-radius: 16px;
+    }
+
+    .booking-form .form-row {
         grid-template-columns: 1fr;
-        gap: 30px;
-        margin-bottom: 60px;
+        gap: 20px;
     }
 
-    .testimonials-slider {
-        grid-template-columns: 1fr;
-        gap: 30px;
+    .booking-form .cta-btn {
+        font-size: 16px;
+        padding: 16px;
     }
 
-    .contact-info-bar {
-        flex-direction: column;
-        gap: 30px;
-        text-align: center;
+    /* Swiper */
+    .swiper-button-next,
+    .swiper-button-prev {
+        width: 35px !important;
+        height: 35px !important;
+        margin-top: -17px !important;
     }
 
-    .map-contact-layout {
-        grid-template-columns: 1fr;
-        gap: 30px;
+    .news-swiper .swiper-slide {
+        padding: 0;
     }
 
-    .map-section iframe {
-        height: 300px;
-    }
-
-    .addresses-grid {
-        grid-template-columns: 1fr;
-        gap: 30px;
-    }
-
+    /* Maps */
     .map-with-addresses {
         grid-template-columns: 1fr;
         gap: 30px;
+        padding: 0;
     }
 
-    .full-map iframe {
+    .full-map iframe,
+    .branches-map {
         height: 300px;
+        border-radius: 16px !important;
     }
 
-    .social-links-grid {
-        flex-direction: column;
-        gap: 16px;
+    .addresses-list {
+        padding: 24px;
+        border-radius: 12px;
+    }
+
+    .address-item {
+        margin-bottom: 20px;
+    }
+
+    .address-item:last-child {
+        margin-bottom: 12px;
+    }
+
+    /* Catering */
+    .catering h2 {
+        font-size: 36px;
+        margin-bottom: 60px;
+    }
+
+    .catering-subtitle {
+        font-size: 16px;
+        max-width: 90%;
+        margin-bottom: 60px;
+    }
+
+    /* Branches */
+    .branch-card {
+        padding: 24px 20px 28px;
+    }
+
+    .branch-card h3 {
+        font-size: 22px;
+    }
+
+    /* Footer */
+    #footer {
+        padding: 60px 0 30px;
     }
 
     .footer-content {
         grid-template-columns: 1fr;
-        gap: 30px;
+        gap: 40px;
+        padding: 0 20px;
         text-align: center;
     }
 
     .footer-nav h4,
-    .footer-contact h4 {
+    .footer-contact h4,
+    .footer-social h4 {
+        margin-top: 0;
+    }
+
+    .footer-social-links {
+        justify-content: center;
+        gap: 20px;
+    }
+
+    .footer-social-link {
+        width: 48px;
+        height: 48px;
+    }
+
+    .admin-button {
+        bottom: 20px;
+        right: 20px;
+        width: 50px;
+        height: 50px;
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 10px;
+    }
+
+    .header-content {
+        padding: 12px 0;
+    }
+
+    .logo {
+        font-size: 18px;
+    }
+
+    .hero {
+        padding: 60px 0 30px;
+        min-height: 70vh;
+    }
+
+    .hero-title {
+        font-size: 28px;
+        margin-bottom: 12px;
+    }
+
+    .hero-subtitle {
+        font-size: 16px;
+        margin-bottom: 12px;
+    }
+
+    .hero-about {
+        font-size: 14px;
+        margin-bottom: 24px;
+    }
+
+    .hero-content {
+        gap: 24px;
+        padding: 0 10px;
+    }
+
+    .contact-form {
+        padding: 20px;
+    }
+
+    .contact-form h3 {
+        font-size: 20px;
+        margin-bottom: 16px;
+    }
+
+    /* All section headings */
+    .about-text h2,
+    .products h2,
+    .menu h2,
+    .news h2,
+    .catering h2,
+    .reservation h2,
+    .branches h2,
+    .contacts h2 {
+        font-size: 28px;
+        margin-bottom: 30px;
+    }
+
+    .product-card,
+    .menu-category,
+    .catering-item,
+    .news-card,
+    .branch-card {
+        border-radius: 12px;
+        padding: 20px;
+    }
+
+    /* Cards content */
+    .product-content h3,
+    .menu-category h3,
+    .catering-item h3,
+    .news-content h3,
+    .branch-card h3 {
+        font-size: 18px;
+        margin-bottom: 8px;
+    }
+
+    .price {
+        font-size: 16px;
+    }
+
+    /* Forms */
+    .booking-form {
+        padding: 24px 16px;
+        margin: 0 5px;
+    }
+
+    .form-group input,
+    .form-group select,
+    .booking-form input,
+    .booking-form select {
+        padding: 14px 16px;
+        font-size: 16px;
+    }
+
+    .booking-form .cta-btn {
+        padding: 16px;
         margin-top: 20px;
+    }
+
+    /* Maps */
+    .full-map iframe,
+    .branches-map {
+        height: 250px;
+    }
+
+    .addresses-list {
+        padding: 20px;
+    }
+
+    /* Footer */
+    #footer {
+        padding: 40px 0 20px;
+    }
+
+    .footer-content {
+        padding: 0 15px;
+    }
+
+    .footer-logo span {
+        font-size: 28px;
+        margin-bottom: 8px;
+    }
+
+    .footer-logo p {
+        font-size: 14px;
+    }
+
+    .footer-nav h4,
+    .footer-contact h4,
+    .footer-social h4 {
+        font-size: 16px;
+        margin-bottom: 16px;
+    }
+
+    .footer-nav a,
+    .footer-contact p,
+    .footer-contact a {
+        font-size: 14px;
+    }
+
+    .admin-button {
+        width: 45px;
+        height: 45px;
+        font-size: 18px;
     }
 }
 

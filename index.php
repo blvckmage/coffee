@@ -97,6 +97,18 @@ if ($catering && is_array($catering) && !empty($catering)) {
                     <span class="bar"></span>
                     <span class="bar"></span>
                 </button>
+
+                <!-- Mobile Navigation Menu -->
+                <nav class="mobile-nav">
+                    <ul class="mobile-nav-list">
+                        <li><a href="#hero" class="mobile-nav-link">Главная</a></li>
+                        <li><a href="#products" class="mobile-nav-link">Продукция</a></li>
+                        <li><a href="#menu" class="mobile-nav-link">Меню</a></li>
+                        <li><a href="#branches" class="mobile-nav-link">Контакты</a></li>
+                        <li><a href="tel:+77771234567" class="mobile-nav-link phone-link">+7 (777) 123-45-67</a></li>
+                        <li><button class="cta-btn mobile-cta">Получить консультацию</button></li>
+                    </ul>
+                </nav>
             </div>
         </div>
     </header>
@@ -798,6 +810,36 @@ if ($catering && is_array($catering) && !empty($catering)) {
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape' && newsModal.classList.contains('show')) {
                 newsModal.classList.remove('show');
+                document.body.style.overflow = '';
+            }
+        });
+
+        // Mobile Menu Functionality
+        const burger = document.querySelector('.burger');
+        const mobileNav = document.querySelector('.mobile-nav');
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link, .mobile-cta');
+
+        // Toggle mobile menu
+        burger.addEventListener('click', function() {
+            this.classList.toggle('active');
+            mobileNav.classList.toggle('active');
+            document.body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : '';
+        });
+
+        // Close mobile menu when clicking on links
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                burger.classList.remove('active');
+                mobileNav.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+
+        // Close mobile menu when clicking outside
+        mobileNav.addEventListener('click', function(e) {
+            if (e.target === this) {
+                burger.classList.remove('active');
+                this.classList.remove('active');
                 document.body.style.overflow = '';
             }
         });
