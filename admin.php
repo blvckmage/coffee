@@ -374,12 +374,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Админ панель - Coffee Pro</title>
+    <title>Админ панель - Tanqurai bread & coffee</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="admin-panel">
-        <h1>Админ панель - Coffee Pro</h1>
+        <h1>Админ панель - Tanqurai bread & coffee</h1>
 
         <div class="admin-header">
             <div class="admin-tabs">
