@@ -66,8 +66,14 @@ if ($catering && is_array($catering) && !empty($catering)) {
                 </div>
                 <nav class="nav">
                     <ul class="nav-list">
-                        <li class="nav-item">
+                        <li class="nav-item dropdown">
                             <a href="#hero" class="nav-link">Главная</a>
+                            <div class="dropdown-content">
+                                <a href="#about">О нас</a>
+                                <a href="#news">Новости</a>
+                                <a href="#catering">Кейтеринг</a>
+                                <a href="#reservation">Бронирование</a>
+                            </div>
                         </li>
                         <li class="nav-item">
                             <a href="#products" class="nav-link">Продукция</a>
@@ -75,7 +81,13 @@ if ($catering && is_array($catering) && !empty($catering)) {
                         <li class="nav-item">
                             <a href="#menu" class="nav-link">Меню</a>
                         </li>
-                        <li><a href="#contacts" class="nav-link">Контакты</a></li>
+                        <li class="nav-item dropdown">
+                            <a href="#contacts" class="nav-link">Контакты</a>
+                            <div class="dropdown-content">
+                                <a href="#branches">Адреса</a>
+                                <a href="#contacts">Контакты</a>
+                            </div>
+                        </li>
                     </ul>
                     <a href="tel:+77771234567" class="phone">+7 (777) 123-45-67</a>
                     <button class="cta-btn header-btn">Получить консультацию</button>
