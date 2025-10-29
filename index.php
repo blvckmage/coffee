@@ -66,13 +66,13 @@ if ($catering && is_array($catering) && !empty($catering)) {
                 </div>
                 <nav class="nav">
                     <ul class="nav-list">
-                        <li class="nav-item dropdown">
+                        <li class="nav-item">
                             <a href="#hero" class="nav-link">Главная</a>
                         </li>
-                        <li class="nav-item dropdown">
+                        <li class="nav-item">
                             <a href="#products" class="nav-link">Продукция</a>
                         </li>
-                        <li class="nav-item dropdown">
+                        <li class="nav-item">
                             <a href="#menu" class="nav-link">Меню</a>
                         </li>
                         <li><a href="#contacts" class="nav-link">Контакты</a></li>
@@ -97,7 +97,6 @@ if ($catering && is_array($catering) && !empty($catering)) {
                 <h1 class="hero-title">Свежеобжаренный кофе и свежая выпечка</h1>
                 <p class="hero-subtitle">Доставка по всему Казахстану и СНГ</p>
                 <p class="hero-about">Tanqurai bread & coffee - это ваш надежный партнер в мире кофе и выпечки. Мы предлагаем свежеобжаренный кофе, ароматный хлеб и профессиональное оборудование для кафе и ресторанов.</p>
-                <button class="cta-btn hero-cta">Узнать больше</button>
             </div>
             <div class="hero-form" data-aos="fade-up" data-aos-delay="200">
                 <form class="contact-form" method="POST" action="contact.php">
