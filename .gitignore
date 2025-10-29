@@ -104,6 +104,6 @@ DS_Store
 .phpunit.result.cache
 
 # Sensitive data
-config.php
+# config.php  # Uncomment if you want to commit config.php
 .env.local
 .env.production

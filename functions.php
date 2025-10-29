@@ -1,5 +1,6 @@
 <?php
 session_start();
+require_once 'config.php';
 
 // Helper function for capitalizing categories
 function capitalizeCategory($cat) {
@@ -146,6 +147,17 @@ function handleContactForm() {
         ];
         saveJson('contacts', $contacts);
 
+        // Отправка уведомления в Telegram для контактных форм
+        $contactMessage = "<b>💬 Новая контактная заявка!</b>\n\n";
+        $contactMessage .= "<b>👤 Имя:</b> $name\n";
+        $contactMessage .= "<b>📞 Телефон:</b> $phone\n";
+        $contactMessage .= "\n<b>⏰ Получено:</b> " . date('d.m.Y H:i') . "\n";
+        $contactMessage .= "<code>#контакт #заявка</code>";
+
+        // Отправляем сообщение в Telegram
+        $telegramResponse = telegramSendMessage($contactMessage);
+        error_log("Telegram message sent for contact form: " . ($telegramResponse ? 'SUCCESS' : 'FAILED'));
+
         // Or send email
         // mail('admin@coffeepro.kz', 'Новая заявка', "Имя: $name\nТелефон: $phone");
 
@@ -188,9 +200,30 @@ function handleReservationForm() {
             'people' => $people,
             'date' => $date,
             'time' => $time,
-            'notes' => $notes
+            'notes' => $notes,
+            'timestamp' => date('Y-m-d H:i:s')
         ];
         saveJson('reservations', $reservations);
+
+        // Отправка уведомления в Telegram
+        $message = "<b>🏨 Новый запрос на бронирование!</b>\n\n";
+        $message .= "<b>👤 Имя:</b> $name\n";
+        $message .= "<b>📞 Телефон:</b> $phone\n";
+        $message .= "<b>🏢 Филиал:</b> $branch\n";
+        $message .= "<b>👥 Количество человек:</b> $people\n";
+        $message .= "<b>📅 Дата:</b> $date\n";
+        $message .= "<b>🕐 Время:</b> $time\n";
+        if (!empty($notes)) {
+            $message .= "<b>📝 Пожелания:</b> $notes\n";
+        }
+        $message .= "\n<b>⏰ Получено:</b> " . date('d.m.Y H:i') . "\n";
+        $message .= "<code>#бронирование #столик</code>";
+
+        // Отправляем сообщение в Telegram
+        $telegramResponse = telegramSendMessage($message);
+
+        // Логируем результат отправки (опционально)
+        error_log("Telegram message sent for reservation: " . ($telegramResponse ? 'SUCCESS' : 'FAILED'));
 
         $_SESSION['success'] = 'Спасибо! Ваш стол забронирован. Мы подтвердим бронирование по телефону.';
         header('Location: ' . strtok($_SERVER['HTTP_REFERER'], '?'));
