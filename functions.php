@@ -126,6 +126,7 @@ function handleContactForm() {
 
     $name = sanitizeInput($_POST['name'] ?? '');
     $phone = sanitizeInput($_POST['phone'] ?? '');
+    $formType = sanitizeInput($_POST['form_type'] ?? 'general');
     $agreement = isset($_POST['agreement']);
 
     $errors = validateRequired([
@@ -143,20 +144,32 @@ function handleContactForm() {
         $contacts[] = [
             'name' => $name,
             'phone' => $phone,
+            'form_type' => $formType,
             'date' => date('Y-m-d H:i:s')
         ];
         saveJson('contacts', $contacts);
 
         // Отправка уведомления в Telegram для контактных форм
-        $contactMessage = "<b>💬 Новая контактная заявка!</b>\n\n";
+        if ($formType === 'consultation') {
+            $messageTitle = "<b>🎯 Новая заявка на консультацию!</b>";
+            $hashtags = "<code>#консультация #заявка</code>";
+        } else {
+            $messageTitle = "<b>💬 Новая контактная заявка!</b>";
+            $hashtags = "<code>#контакт #заявка</code>";
+        }
+
+        $contactMessage = "$messageTitle\n\n";
         $contactMessage .= "<b>👤 Имя:</b> $name\n";
         $contactMessage .= "<b>📞 Телефон:</b> $phone\n";
+        if ($formType === 'consultation') {
+            $contactMessage .= "<b>🎯 Тип:</b> Запрос консультации\n";
+        }
         $contactMessage .= "\n<b>⏰ Получено:</b> " . date('d.m.Y H:i') . "\n";
-        $contactMessage .= "<code>#контакт #заявка</code>";
+        $contactMessage .= $hashtags;
 
         // Отправляем сообщение в Telegram
         $telegramResponse = telegramSendMessage($contactMessage);
-        error_log("Telegram message sent for contact form: " . ($telegramResponse ? 'SUCCESS' : 'FAILED'));
+        error_log("Telegram message sent for contact form ($formType): " . ($telegramResponse ? 'SUCCESS' : 'FAILED'));
 
         // Or send email
         // mail('admin@coffeepro.kz', 'Новая заявка', "Имя: $name\nТелефон: $phone");

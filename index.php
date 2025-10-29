@@ -101,6 +101,7 @@ if ($catering && is_array($catering) && !empty($catering)) {
             </div>
             <div class="hero-form" data-aos="fade-up" data-aos-delay="200">
                 <form class="contact-form" method="POST" action="contact.php">
+                    <input type="hidden" name="form_type" value="consultation">
                     <h3>Получить консультацию</h3>
                     <div class="form-group">
                         <input type="text" name="name" placeholder="Ваше имя" required>
