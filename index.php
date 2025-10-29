@@ -82,10 +82,10 @@ if ($catering && is_array($catering) && !empty($catering)) {
                             <a href="#menu" class="nav-link">Меню</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a href="#footer" class="nav-link">Контакты</a>
+                            <a href="#branches" class="nav-link">Контакты</a>
                             <div class="dropdown-content">
                                 <a href="#branches">Адреса</a>
-                                <a href="#contacts">Контакты</a>
+                                <a href="#footer">Контакты</a>
                             </div>
                         </li>
                     </ul>
@@ -196,7 +196,7 @@ if ($catering && is_array($catering) && !empty($catering)) {
             </div>
 
             <!-- Menu Section -->
-            <h2 data-aos="fade-up">Наше меню</h2>
+            <h2 id="menu" data-aos="fade-up">Наше меню</h2>
             <div class="menu-grid" id="menu-grid">
                 <?php
                 if ($menu) {
