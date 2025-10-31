@@ -211,13 +211,14 @@ $products = loadProducts();
             easing: 'ease-in-out'
         });
 
-        // Mobile Menu Functionality
+        // Mobile Menu Functionality - Enhanced for DevTools compatibility
         const burger = document.querySelector('.burger');
         const mobileNav = document.querySelector('.mobile-nav');
         const mobileNavLinks = document.querySelectorAll('.mobile-nav-link, .mobile-cta');
 
         // Function to close mobile menu
         function closeMobileMenu() {
+            console.log('Closing mobile menu');
             burger.classList.remove('active');
             mobileNav.classList.remove('active');
             document.body.style.overflow = '';
@@ -225,72 +226,93 @@ $products = loadProducts();
 
         // Function to open/close mobile menu
         function toggleMobileMenu() {
+            console.log('Toggling mobile menu');
             burger.classList.toggle('active');
             mobileNav.classList.toggle('active');
             document.body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : '';
         }
 
-        // Toggle mobile menu - add both click and touchstart for mobile compatibility
-        burger.addEventListener('click', toggleMobileMenu);
-        burger.addEventListener('touchstart', function(e) {
+        // Handle burger button clicks - multiple event types for compatibility
+        function handleBurgerClick(e) {
             e.preventDefault();
+            e.stopPropagation();
             toggleMobileMenu();
-        });
+        }
 
-        // Close mobile menu when clicking on links
+        burger.addEventListener('click', handleBurgerClick);
+        burger.addEventListener('touchstart', handleBurgerClick);
+        burger.addEventListener('mousedown', handleBurgerClick);
+
+        // Handle mobile navigation links
+        function handleNavLinkClick(e) {
+            const link = this;
+            const href = link.getAttribute('href');
+
+            console.log('Nav link clicked:', href);
+
+            // Close menu immediately
+            closeMobileMenu();
+
+            // For anchor links (starting with #), handle immediately
+            if (href && href.startsWith('#')) {
+                e.preventDefault();
+                // Small delay to allow menu animation
+                setTimeout(() => {
+                    const targetElement = document.querySelector(href);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({ behavior: 'smooth' });
+                    }
+                }, 300);
+            }
+            // For external links, navigate after menu closes
+            else if (href && (href.startsWith('http') || href.startsWith('tel:') || href.includes('.php'))) {
+                e.preventDefault();
+                setTimeout(() => {
+                    window.location.href = href;
+                }, 300);
+            }
+            // For other cases, just close the menu
+            else {
+                e.preventDefault();
+            }
+        }
+
+        // Add event listeners to all navigation links
         mobileNavLinks.forEach(link => {
-            link.addEventListener('click', function(e) {
-                // Prevent default behavior for links to allow menu to close first
-                if (this.tagName === 'A') {
-                    e.preventDefault();
-                    const href = this.getAttribute('href');
-
-                    // Close menu immediately
-                    closeMobileMenu();
-
-                    // Navigate after menu closes
-                    setTimeout(() => {
-                        window.location.href = href;
-                    }, 100);
-                } else {
-                    // For buttons, just close menu
-                    closeMobileMenu();
-                }
-            });
-
-            // Add touchstart for mobile devices
-            link.addEventListener('touchstart', function(e) {
-                if (this.tagName === 'A') {
-                    e.preventDefault();
-                    const href = this.getAttribute('href');
-
-                    // Close menu immediately
-                    closeMobileMenu();
-
-                    // Navigate after menu closes
-                    setTimeout(() => {
-                        window.location.href = href;
-                    }, 100);
-                } else {
-                    // For buttons, just close menu
-                    closeMobileMenu();
-                }
-            });
+            link.addEventListener('click', handleNavLinkClick);
+            link.addEventListener('touchstart', handleNavLinkClick);
+            link.addEventListener('mousedown', handleNavLinkClick);
         });
 
         // Close mobile menu when clicking outside
-        mobileNav.addEventListener('click', function(e) {
-            if (e.target === this) {
+        function handleOutsideClick(e) {
+            if (e.target === mobileNav) {
+                console.log('Clicked outside mobile menu');
+                closeMobileMenu();
+            }
+        }
+
+        mobileNav.addEventListener('click', handleOutsideClick);
+        mobileNav.addEventListener('touchstart', handleOutsideClick);
+
+        // Close menu on Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && mobileNav.classList.contains('active')) {
+                console.log('Escape key pressed, closing menu');
                 closeMobileMenu();
             }
         });
 
-        // Close mobile menu when clicking outside (touch support)
-        mobileNav.addEventListener('touchstart', function(e) {
-            if (e.target === this) {
-                closeMobileMenu();
-            }
-        });
+        // Prevent menu from closing when clicking inside the menu content
+        const mobileNavList = document.querySelector('.mobile-nav-list');
+        if (mobileNavList) {
+            mobileNavList.addEventListener('click', function(e) {
+                e.stopPropagation();
+            });
+            mobileNavList.addEventListener('touchstart', function(e) {
+                e.stopPropagation();
+            });
+        }
     </script>
 </body>
 </html>
