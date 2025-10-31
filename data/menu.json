@@ -3,83 +3,83 @@
     {
       "name": "Эспрессо",
       "price": 250,
-      "image": "images/espresso.jpg"
+      "image": "https://images.unsplash.com/photo-1510591509098-f4fdc6d0ff04?w=400&h=300&fit=crop&crop=center"
     },
     {
       "name": "Американo",
       "price": 300,
-      "image": "images/americano.jpg"
+      "image": "https://images.unsplash.com/photo-1559056199-641a0ac8b55e?w=400&h=300&fit=crop&crop=center"
     },
     {
       "name": "Двойной эспрессо",
       "price": 400,
-      "image": "images/espresso.jpg"
+      "image": "https://images.unsplash.com/photo-1510591509098-f4fdc6d0ff04?w=400&h=300&fit=crop&crop=center"
     },
     {
       "name": "Мачиато",
       "price": 360,
-      "image": "images/latte.jpg"
+      "image": "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop&crop=center"
     }
   ],
   "milk-coffee": [
     {
       "name": "Капучино",
       "price": 400,
-      "image": "images/cappuccino.jpg"
+      "image": "https://images.unsplash.com/photo-1572442388796-11668a67e53d?w=400&h=300&fit=crop&crop=center"
     },
     {
       "name": "Латте",
       "price": 450,
-      "image": "images/latte.jpg"
+      "image": "https://images.unsplash.com/photo-1561047029-3000c68339ca?w=400&h=300&fit=crop&crop=center"
     },
     {
       "name": "Флэт уайт",
       "price": 420,
-      "image": "images/wood-texture.jpg"
+      "image": "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=400&h=300&fit=crop&crop=center"
     },
     {
       "name": "Какао",
       "price": 380,
-      "image": "images/hero-bg.jpg"
+      "image": "https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=400&h=300&fit=crop&crop=center"
     }
   ],
   "desserts": [
     {
       "name": "Тирамису",
       "price": 600,
-      "image": "images/coffee-texture.jpg"
+      "image": "https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?w=400&h=300&fit=crop&crop=center"
     },
     {
       "name": "Чизкейк",
       "price": 500,
-      "image": "images/americano.jpg"
+      "image": "https://images.unsplash.com/photo-1533134242443-d4fd215305ad?w=400&h=300&fit=crop&crop=center"
     },
     {
       "name": "Маффин",
       "price": 250,
-      "image": "images/coffee-bg.jpg"
+      "image": "https://images.unsplash.com/photo-1587668178277-295251f900ce?w=400&h=300&fit=crop&crop=center"
     },
     {
       "name": "Круассан",
       "price": 200,
-      "image": "images/wood-texture.jpg"
+      "image": "https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=400&h=300&fit=crop&crop=center"
     }
   ],
   "tea": [
     {
       "name": "Зелёный чай",
       "price": 180,
-      "image": "images/coffee-texture.jpg"
+      "image": "https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=400&h=300&fit=crop&crop=center"
     },
     {
       "name": "Чёрный чай",
       "price": 150,
-      "image": "images/hero-bg.jpg"
+      "image": "https://images.unsplash.com/photo-1576092762793-c77a5f3f18b4?w=400&h=300&fit=crop&crop=center"
     },
     {
       "name": "Чай гурджаани",
       "price": 220,
-      "image": "images/wood-texture.jpg"
+      "image": "https://images.unsplash.com/photo-1597481499750-3e6b22637e12?w=400&h=300&fit=crop&crop=center"
     }
   ]
 }

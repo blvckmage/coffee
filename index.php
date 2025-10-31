@@ -54,7 +54,6 @@ if ($catering && is_array($catering) && !empty($catering)) {
     <script src="https://unpkg.com/swiper@11/swiper-bundle.min.js"></script>
     <!-- Yandex Maps API -->
     <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU"></script>
-    <script src="script.js"></script>
 </head>
 <body>
     <!-- Header -->
@@ -62,35 +61,38 @@ if ($catering && is_array($catering) && !empty($catering)) {
         <div class="container">
             <div class="header-content">
                 <div class="logo">
-                    <span>Tanqurai bread & coffee</span>
+                    <a href="index.php">
+                        <img src="https://images.unsplash.com/photo-1559056199-641a0ac8b55e?w=40&h=40&fit=crop&crop=center" alt="Coffee Logo" class="logo-icon">
+                        <span>Tanqurai bread & coffee</span>
+                    </a>
                 </div>
                 <nav class="nav">
                     <ul class="nav-list">
                         <li class="nav-item dropdown">
-                            <a href="#hero" class="nav-link">Главная</a>
+                            <a href="index.php" class="nav-link">Главная</a>
                             <div class="dropdown-content">
-                                <a href="#about">О нас</a>
-                                <a href="#news">Новости</a>
-                                <a href="#catering">Кейтеринг</a>
+                                <a href="about.php">О нас</a>
+                                <a href="news.php">Новости</a>
+                                <a href="catering.php">Кейтеринг</a>
                                 <a href="#reservation">Бронирование</a>
                             </div>
                         </li>
                         <li class="nav-item">
-                            <a href="#products" class="nav-link">Продукция</a>
+                            <a href="products.php" class="nav-link">Продукция</a>
                         </li>
                         <li class="nav-item">
-                            <a href="#menu" class="nav-link">Меню</a>
+                            <a href="menu.php" class="nav-link">Меню</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a href="#branches" class="nav-link">Контакты</a>
+                            <a href="branches.php" class="nav-link">Контакты</a>
                             <div class="dropdown-content">
-                                <a href="#branches">Адреса</a>
-                                <a href="#footer">Контакты</a>
+                                <a href="branches.php">Адреса</a>
+                                <a href="contact.php">Контакты</a>
                             </div>
                         </li>
                     </ul>
                     <a href="tel:+77771234567" class="phone">+7 (777) 123-45-67</a>
-                    <button class="cta-btn header-btn">Получить консультацию</button>
+                    <a href="#hero" class="cta-btn header-btn">Получить консультацию</a>
                 </nav>
                 <button class="burger">
                     <span class="bar"></span>
@@ -101,12 +103,17 @@ if ($catering && is_array($catering) && !empty($catering)) {
                 <!-- Mobile Navigation Menu -->
                 <nav class="mobile-nav">
                     <ul class="mobile-nav-list">
-                        <li><a href="#hero" class="mobile-nav-link">Главная</a></li>
-                        <li><a href="#products" class="mobile-nav-link">Продукция</a></li>
-                        <li><a href="#menu" class="mobile-nav-link">Меню</a></li>
-                        <li><a href="#branches" class="mobile-nav-link">Контакты</a></li>
+                        <li><a href="index.php" class="mobile-nav-link">Главная</a></li>
+                        <li><a href="about.php" class="mobile-nav-link">О нас</a></li>
+                        <li><a href="news.php" class="mobile-nav-link">Новости</a></li>
+                        <li><a href="catering.php" class="mobile-nav-link">Кейтеринг</a></li>
+                        <li><a href="#reservation" class="mobile-nav-link">Бронирование</a></li>
+                        <li><a href="products.php" class="mobile-nav-link">Продукция</a></li>
+                        <li><a href="menu.php" class="mobile-nav-link">Меню</a></li>
+                        <li><a href="branches.php" class="mobile-nav-link">Адреса</a></li>
+                        <li><a href="contact.php" class="mobile-nav-link">Контакты</a></li>
                         <li><a href="tel:+77771234567" class="mobile-nav-link phone-link">+7 (777) 123-45-67</a></li>
-                        <li><button class="cta-btn mobile-cta">Получить консультацию</button></li>
+                        <li><a href="#hero" class="cta-btn mobile-cta">Получить консультацию</a></li>
                     </ul>
                 </nav>
             </div>
@@ -819,28 +826,79 @@ if ($catering && is_array($catering) && !empty($catering)) {
         const mobileNav = document.querySelector('.mobile-nav');
         const mobileNavLinks = document.querySelectorAll('.mobile-nav-link, .mobile-cta');
 
-        // Toggle mobile menu
-        burger.addEventListener('click', function() {
-            this.classList.toggle('active');
+        // Function to close mobile menu
+        function closeMobileMenu() {
+            burger.classList.remove('active');
+            mobileNav.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Function to open/close mobile menu
+        function toggleMobileMenu() {
+            burger.classList.toggle('active');
             mobileNav.classList.toggle('active');
             document.body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : '';
+        }
+
+        // Toggle mobile menu - add both click and touchstart for mobile compatibility
+        burger.addEventListener('click', toggleMobileMenu);
+        burger.addEventListener('touchstart', function(e) {
+            e.preventDefault();
+            toggleMobileMenu();
         });
 
         // Close mobile menu when clicking on links
         mobileNavLinks.forEach(link => {
-            link.addEventListener('click', function() {
-                burger.classList.remove('active');
-                mobileNav.classList.remove('active');
-                document.body.style.overflow = '';
+            link.addEventListener('click', function(e) {
+                // Prevent default behavior for links to allow menu to close first
+                if (this.tagName === 'A') {
+                    e.preventDefault();
+                    const href = this.getAttribute('href');
+
+                    // Close menu immediately
+                    closeMobileMenu();
+
+                    // Navigate after menu closes
+                    setTimeout(() => {
+                        window.location.href = href;
+                    }, 100);
+                } else {
+                    // For buttons, just close menu
+                    closeMobileMenu();
+                }
+            });
+
+            // Add touchstart for mobile devices
+            link.addEventListener('touchstart', function(e) {
+                if (this.tagName === 'A') {
+                    e.preventDefault();
+                    const href = this.getAttribute('href');
+
+                    // Close menu immediately
+                    closeMobileMenu();
+
+                    // Navigate after menu closes
+                    setTimeout(() => {
+                        window.location.href = href;
+                    }, 100);
+                } else {
+                    // For buttons, just close menu
+                    closeMobileMenu();
+                }
             });
         });
 
         // Close mobile menu when clicking outside
         mobileNav.addEventListener('click', function(e) {
             if (e.target === this) {
-                burger.classList.remove('active');
-                this.classList.remove('active');
-                document.body.style.overflow = '';
+                closeMobileMenu();
+            }
+        });
+
+        // Close mobile menu when clicking outside (touch support)
+        mobileNav.addEventListener('touchstart', function(e) {
+            if (e.target === this) {
+                closeMobileMenu();
             }
         });
     </script>
