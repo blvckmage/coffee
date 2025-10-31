@@ -834,7 +834,7 @@ if ($catering && is_array($catering) && !empty($catering)) {
 
         if (!burger || !mobileNav) {
             console.error('Mobile menu elements not found!');
-            return;
+            // Continue execution instead of return
         }
 
         // Function to close mobile menu
