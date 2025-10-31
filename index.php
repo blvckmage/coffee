@@ -822,9 +822,20 @@ if ($catering && is_array($catering) && !empty($catering)) {
         });
 
         // Mobile Menu Functionality - Enhanced for DevTools compatibility
+        console.log('Initializing mobile menu...');
+
         const burger = document.querySelector('.burger');
         const mobileNav = document.querySelector('.mobile-nav');
         const mobileNavLinks = document.querySelectorAll('.mobile-nav-link, .mobile-cta');
+
+        console.log('Burger element:', burger);
+        console.log('Mobile nav element:', mobileNav);
+        console.log('Mobile nav links:', mobileNavLinks);
+
+        if (!burger || !mobileNav) {
+            console.error('Mobile menu elements not found!');
+            return;
+        }
 
         // Function to close mobile menu
         function closeMobileMenu() {
@@ -832,18 +843,34 @@ if ($catering && is_array($catering) && !empty($catering)) {
             burger.classList.remove('active');
             mobileNav.classList.remove('active');
             document.body.style.overflow = '';
+
+            // Force style update for debugging
+            burger.style.transform = '';
+            mobileNav.style.left = '';
         }
 
         // Function to open/close mobile menu
         function toggleMobileMenu() {
             console.log('Toggling mobile menu');
-            burger.classList.toggle('active');
-            mobileNav.classList.toggle('active');
-            document.body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : '';
+            const isActive = mobileNav.classList.contains('active');
+            console.log('Menu is currently active:', isActive);
+
+            if (isActive) {
+                closeMobileMenu();
+            } else {
+                burger.classList.add('active');
+                mobileNav.classList.add('active');
+                document.body.style.overflow = 'hidden';
+
+                // Force style update for debugging
+                burger.style.transform = 'rotate(0deg)';
+                mobileNav.style.left = '0';
+            }
         }
 
         // Handle burger button clicks - multiple event types for compatibility
         function handleBurgerClick(e) {
+            console.log('Burger clicked/touched');
             e.preventDefault();
             e.stopPropagation();
             toggleMobileMenu();
@@ -923,6 +950,8 @@ if ($catering && is_array($catering) && !empty($catering)) {
                 e.stopPropagation();
             });
         }
+
+        console.log('Mobile menu initialized successfully');
     </script>
 </body>
 </html>
